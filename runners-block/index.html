@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Runner's Block — find the songs that make you run faster</title>
+  <meta name="description" content="An Android app that matches your GPS pace to whatever's playing in any music app and ranks your songs by how much faster they make you run.">
+  <meta property="og:title" content="Runner's Block — find the songs that make you run faster">
+  <meta property="og:description" content="An Android app that ranks your music by how much faster it makes you run.">
+  <meta property="og:image" content="https://garry645.github.io/runners-block/media/banner.jpg">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">Garrison Hatcher</a>
+      <nav class="nav" aria-label="Page">
+        <a class="hide-sm" href="#how">How it works</a>
+        <a class="hide-sm" href="#engineering">How it's built</a>
+        <a href="privacy/">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <p class="eyebrow">Android app · Kotlin · Jetpack Compose</p>
+      <h1>Find the songs that make you run faster.</h1>
+      <p class="lede">Runner's Block records your run with GPS, notices what's playing in whatever music app you use, and works out your pace during every song. Then it ranks your music by how much faster (or slower) it makes you.</p>
+      <div class="actions">
+        <a class="btn" href="#how">How it works</a>
+        <a class="btn" href="privacy/">Privacy policy</a>
+      </div>
+
+      <div class="phones" aria-label="Screenshots">
+        <figure class="phone">
+          <img src="media/run-route-map.jpg" alt="A run's detail screen: 3.26 miles at 7:26 per mile, with the route map colored by the song that was playing and numbered markers matching the song list below" width="540" height="1170">
+          <figcaption>Every run's route, colored by the song that was playing</figcaption>
+        </figure>
+        <figure class="phone">
+          <img src="media/insights-light.jpg" alt="Insights screen: your power song is Lose Yourself by Eminem, 33 seconds per mile faster than your average, followed by a ranked list of songs" width="540" height="1170">
+          <figcaption>Insights: every song ranked by your pace while it played</figcaption>
+        </figure>
+        <figure class="phone">
+          <img src="media/runs-in-progress-dark.jpg" alt="Runs screen in dark mode with a run in progress, this week's 14.58 miles, and recent runs" width="540" height="1170">
+          <figcaption>Runs: the week at a glance, with a run in progress</figcaption>
+        </figure>
+      </div>
+      <p class="stats-note">Sample data. The route is a generated test run through downtown Auburn, AL; the other two screens are rendered by the app's UI tests.</p>
+    </div>
+
+    <section id="how">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <p class="section-intro">No special music app needed, and nothing to set up beyond two permissions.</p>
+        <div class="pipeline">
+          <div class="stage">
+            <span class="tag">1 · run</span>
+            <h3>Record with GPS</h3>
+            <p>Start a run and go. A foreground service tracks your route and pace, and tells walking breaks apart from running.</p>
+          </div>
+          <div class="stage">
+            <span class="tag">2 · listen</span>
+            <h3>Play anything</h3>
+            <p>Spotify, YouTube Music, Pandora, podcasts. The app reads the "now playing" info from the media controls, so it works with any player.</p>
+          </div>
+          <div class="stage">
+            <span class="tag">3 · match</span>
+            <h3>Pace per song</h3>
+            <p>Each stretch of the route is matched to the song that was playing, and compared with your average for that part of the run.</p>
+          </div>
+          <div class="stage">
+            <span class="tag">4 · rank</span>
+            <h3>Your power songs</h3>
+            <p>Songs are ranked by how much faster they make you, split by the start, middle and end of a run, with optional fatigue and recency weighting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="engineering">
+      <div class="wrap">
+        <h2>How it's built</h2>
+        <p class="section-intro">A single-activity Jetpack Compose app, split into layers that each do one job.</p>
+        <div class="pipeline">
+          <div class="stage">
+            <span class="tag">ui</span>
+            <h3>Compose screens</h3>
+            <p>Material 3 and Navigation 3. Each screen draws one immutable state and sends user actions up.</p>
+          </div>
+          <div class="stage">
+            <span class="tag">presenters</span>
+            <h3>Screen logic</h3>
+            <p>Hold each screen's state as a StateFlow, handle its actions, and own the navigation back stack.</p>
+          </div>
+          <div class="stage">
+            <span class="tag">domain</span>
+            <h3>Plain Kotlin</h3>
+            <p>Pace math, song matching and run-or-walk detection, with no Android dependencies.</p>
+          </div>
+          <div class="stage">
+            <span class="tag">data &amp; services</span>
+            <h3>Room, DataStore, services</h3>
+            <p>Runs in Room, settings in DataStore, GPS in a foreground service, music from a notification listener.</p>
+          </div>
+        </div>
+        <p class="section-intro" style="margin-top: 20px">Dagger 2 wires it together, with a separate graph for the tracking service. Coroutines and Flow carry data between layers.</p>
+        <ul class="chips" style="margin-top: 8px">
+          <li>Kotlin</li><li>Jetpack Compose</li><li>Material 3</li><li>Navigation 3</li><li>Coroutines &amp; Flow</li><li>Dagger 2</li><li>Room</li><li>DataStore</li><li>Google Maps SDK</li><li>Robolectric</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Built by Garrison Hatcher.</span>
+      <a href="../">More projects</a>
+    </div>
+  </footer>
+</body>
+</html>

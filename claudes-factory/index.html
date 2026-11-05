@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClaudesFactory — an AI left alone to build a factory</title>
+  <meta name="description" content="Claude plays Satisfactory by itself through a custom game mod and an MCP server, live on Twitch for days at a time.">
+  <meta property="og:title" content="ClaudesFactory — an AI left alone to build a factory">
+  <meta property="og:description" content="Claude plays Satisfactory by itself through a custom game mod and an MCP server, live on Twitch.">
+  <meta property="og:image" content="https://garry645.github.io/claudes-factory/media/full/hero-space-elevator.jpg">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">Garrison Hatcher</a>
+      <nav class="nav" aria-label="Page">
+        <a class="hide-sm" href="#how">How it works</a>
+        <a class="hide-sm" href="#gallery">Gallery</a>
+        <a class="btn btn-sm btn-primary" href="https://www.twitch.tv/gamergarry645"><span class="live-dot" aria-hidden="true"></span>Watch on Twitch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <p class="eyebrow">AI agent · Satisfactory · Live on Twitch</p>
+      <h1>An AI left alone to build a factory.</h1>
+      <p class="lede">Claude plays Satisfactory by itself through a custom game mod. It reads the world through tools, plans, builds and fixes its own factory, and nobody touches the controls. It has run for days at a time, live on stream.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://www.twitch.tv/gamergarry645"><span class="live-dot" aria-hidden="true"></span>Watch it live</a>
+        <a class="btn" href="#how">How it works</a>
+      </div>
+
+      <figure class="hero-media">
+        <div class="media-frame">
+          <img src="media/full/hero-space-elevator.jpg"
+               srcset="media/thumb/hero-space-elevator.jpg 800w, media/full/hero-space-elevator.jpg 1920w"
+               sizes="(max-width: 1112px) calc(100vw - 32px), 1080px"
+               alt="The Space Elevator towering over the factory Claude built, with machines spread across the plain below"
+               width="1920" height="1080" fetchpriority="high">
+        </div>
+        <figcaption>Day 45: the Space Elevator, with the factory spread out below while Claude ferries parts for Phase 3. The panels are the stream's own overlay: what Claude is doing, what it's working on, and how the factory is running.</figcaption>
+      </figure>
+
+      <div class="stats" aria-label="One 33-hour stream, by the numbers">
+        <div class="stat"><b>33.3 h</b><span>one unbroken broadcast</span></div>
+        <div class="stat"><b>77%</b><span>of it with Claude actively playing</span></div>
+        <div class="stat"><b>11,695</b><span>tool calls by the agent</span></div>
+        <div class="stat"><b>Nuclear</b><span>power reached; Tier 7 done</span></div>
+      </div>
+      <p class="stats-note">From the run review of the Oct 30 – Nov 1, 2026 broadcast (game days 68–108).</p>
+    </div>
+
+    <section id="live">
+      <div class="wrap">
+        <h2>Watch it live</h2>
+        <p class="section-intro">When a run is on, this is the stream. Offline? <a href="https://www.twitch.tv/gamergarry645">Follow the channel</a> to catch the next one.</p>
+        <div class="media-frame ratio-16x9" id="twitch-embed">
+          <noscript><p style="padding:24px">Watch at <a href="https://www.twitch.tv/gamergarry645">twitch.tv/gamergarry645</a>.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section id="seeing">
+      <div class="wrap">
+        <h2>What you're watching</h2>
+        <p class="section-intro">The camera follows Claude. The overlay is drawn from the agent's own tool calls and messages, so you can always see what it's doing and why.</p>
+        <figure>
+          <div class="media-frame annotated">
+            <img src="media/full/overlay-day18.jpg"
+                 srcset="media/thumb/overlay-day18.jpg 800w, media/full/overlay-day18.jpg 1920w"
+                 sizes="(max-width: 1112px) calc(100vw - 32px), 1080px"
+                 alt="A stream frame with four overlay panels: the milestone at top left, the factory's power at top right, Claude's current action at bottom left and its last message at bottom right"
+                 width="1920" height="1080" loading="lazy">
+            <span class="marker" style="left: 31%; top: 4%" aria-hidden="true">1</span>
+            <span class="marker" style="left: 70.5%; top: 4%" aria-hidden="true">2</span>
+            <span class="marker" style="left: 46.5%; top: 73%" aria-hidden="true">3</span>
+            <span class="marker" style="left: 56.5%; top: 83%" aria-hidden="true">4</span>
+          </div>
+          <figcaption>Day 18 of the first stream: Claude has just paid for a milestone and plans its next line, while the game refuses one of its placements (the red line).</figcaption>
+        </figure>
+        <ol class="legend-grid">
+          <li><span class="num" aria-hidden="true">1</span><b>Milestone</b><p>The goal Claude chose and how close it is.</p></li>
+          <li><span class="num" aria-hidden="true">2</span><b>The factory</b><p>Power in use and available; how many machines are running, waiting or off.</p></li>
+          <li><span class="num" aria-hidden="true">3</span><b>Claude is</b><p>The tool call running now and the few before it. Anything the game refused shows in red.</p></li>
+          <li><span class="num" aria-hidden="true">4</span><b>Claude said</b><p>Its own words in the game chat: what it just did and what it will try next.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <p class="section-intro">Four pieces, from the process that keeps the run alive down to the code inside the game.</p>
+        <div class="pipeline">
+          <div class="stage">
+            <span class="tag">supervisor</span>
+            <h3>Keeps it running for days</h3>
+            <p>Starts each game day, watches for crashes and hangs, saves checkpoints, paces usage, and checks every day's outcome against the real world state.</p>
+          </div>
+          <div class="stage">
+            <span class="tag">claude code</span>
+            <h3>The player</h3>
+            <p>Headless Claude Code sessions. Each picks up from notes it left itself. Every few days it takes a <em>step back</em> to rethink the plan.</p>
+          </div>
+          <div class="stage">
+            <span class="tag">mcp server · node.js</span>
+            <h3>74 game tools</h3>
+            <p>Survey terrain, find resources, lay out machine rows, connect belts, read flow rates, check power, fly a camera drone, pay milestones.</p>
+          </div>
+          <div class="stage">
+            <span class="tag">mod · c++ / ue5</span>
+            <h3>An API inside the game</h3>
+            <p>A Satisfactory mod that runs an HTTP server in the game process and builds real buildings with collision, terrain traces and belt stitching.</p>
+          </div>
+        </div>
+        <ul class="details">
+          <li><b>Real placement, not save editing.</b> Buildings spawn live, are registered with the game's power and factory systems, and are refused exactly as they would be for a player.</li>
+          <li><b>Game-thread safe.</b> Every engine call is marshalled onto Unreal's game thread; browser-origin requests are rejected.</li>
+          <li><b>It can see.</b> A camera drone gives the agent overhead captures of what it built, not just coordinates.</li>
+          <li><b>Copilot mode.</b> Instead of leaving it alone, you can direct Claude from in-game chat.</li>
+          <li><b>A stream director.</b> Switches OBS scenes and camera cuts on its own, and shows a break card between days.</li>
+          <li><b>Measured.</b> Every run is logged and reviewed: tool calls, refusals and where they happen, time per activity, cost per day.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="wrap">
+        <h2>Gallery</h2>
+        <p class="section-intro">Frames from the streams, as viewers saw them. Click any photo to see it full size.</p>
+        <div class="photo-grid">
+          <a class="photo" href="media/full/g-lake-refinery.jpg" data-caption="Day 41: refineries on a platform Claude built out on the lake, for rubber and coke. 700 of 1,065 MW in use.">
+            <img src="media/thumb/g-lake-refinery.jpg" alt="Refineries with tall chimneys on a foundation platform built out over a lake" width="800" height="450" loading="lazy"><span>Day 41</span>
+          </a>
+          <a class="photo" href="media/full/g-lake-generators.jpg" data-caption="Day 45: generators smoking on the lake platform at dusk. 860 of 1,215 MW in use.">
+            <img src="media/thumb/g-lake-generators.jpg" alt="Rows of generators with black smoke on a platform over the lake in blue evening light" width="800" height="450" loading="lazy"><span>Day 45</span>
+          </a>
+          <a class="photo" href="media/full/g-coal-power.jpg" data-caption="Day 42: belts weaving between machines. Claude notices it has no cable machine and builds one so it can wire up new generators.">
+            <img src="media/thumb/g-coal-power.jpg" alt="Overhead view of conveyor belts weaving between machines and a smoking generator" width="800" height="450" loading="lazy"><span>Day 42</span>
+          </a>
+          <a class="photo" href="media/full/g-monorail-line.jpg" data-caption="Day 43: a new production line feeding steel beams to the Monorail Train Technology milestone.">
+            <img src="media/thumb/g-monorail-line.jpg" alt="Constructors along a conveyor line on a grassy plain" width="800" height="450" loading="lazy"><span>Day 43</span>
+          </a>
+          <a class="photo" href="media/full/g-elevator-down.jpg" data-caption="Day 36: looking down the Space Elevator while Claude delivers Phase 2 parts.">
+            <img src="media/thumb/g-elevator-down.jpg" alt="View straight down the side of the Space Elevator to the landscape far below" width="800" height="450" loading="lazy"><span>Day 36</span>
+          </a>
+          <a class="photo" href="media/full/g-belts.jpg" data-caption="Day 39: Claude adds a second screw constructor after finding its motor line is short of rotors.">
+            <img src="media/thumb/g-belts.jpg" alt="Machines on stilts joined by conveyor belts over a green hillside" width="800" height="450" loading="lazy"><span>Day 39</span>
+          </a>
+          <a class="photo" href="media/full/g-platform.jpg" data-caption="Day 40: machines on a foundation platform at night, making motors for the Petroleum Power milestone.">
+            <img src="media/thumb/g-platform.jpg" alt="Machines on a lit foundation platform at night" width="800" height="450" loading="lazy"><span>Day 40</span>
+          </a>
+          <a class="photo" href="media/full/g-night-grid.jpg" data-caption="Day 22: the power plant's pipes and generators at night, from above. 493 of 630 MW in use.">
+            <img src="media/thumb/g-night-grid.jpg" alt="Overhead night view of a grid of pipes and generators" width="800" height="450" loading="lazy"><span>Day 22</span>
+          </a>
+          <a class="photo" href="media/full/g-day50.jpg" data-caption="Day 50: Claude decides to swap an idle Heavy Modular Frame manufacturer for a Versatile Framework assembler fed by the hall's spare steel beams.">
+            <img src="media/thumb/g-day50.jpg" alt="Curving conveyor belts between machines in the factory hall" width="800" height="450" loading="lazy"><span>Day 50</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="lessons">
+      <div class="wrap">
+        <h2>What it taught me about agents</h2>
+        <p class="section-intro">Running an agent for days surfaces failure modes you never see in a five-minute demo.</p>
+        <div class="lessons">
+          <div class="lesson text-only">
+            <div>
+              <h3>An agent believes its tools.</h3>
+              <p>For 14 game days Claude was certain nitrogen didn't exist on the map. It had checked "six ways", but none of its tools could list resource wells. One new tool fixed it, and Claude found the well three days later. When an agent says something is impossible, first check what its tools can actually see.</p>
+            </div>
+          </div>
+          <div class="lesson">
+            <figure>
+              <div class="media-frame"><img src="media/day43-belt-refused.jpg" alt="Day 43: the overlay shows two belt placements refused by the game for overlapping" width="1280" height="720" loading="lazy"></div>
+            </figure>
+            <div>
+              <h3>Refusals are signal.</h3>
+              <p>43% of build attempts in one long run were refused by the game: crowding by its own buildings, steep ground, sharp belt turns. Logging why each one failed, and where (the same few spots kept coming back), showed which tools to build next.</p>
+            </div>
+          </div>
+          <div class="lesson text-only">
+            <div>
+              <h3>Stepping back is cheap.</h3>
+              <p>Days spent replanning still grew the factory almost as fast as normal play days: +2.7 machines an hour versus +3.0. A regular pause to rethink costs little and catches bad plans early.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tech">
+      <div class="wrap">
+        <h2>Built with</h2>
+        <ul class="chips">
+          <li>C++</li><li>Unreal Engine 5</li><li>Satisfactory Mod Loader</li><li>Node.js</li><li>Model Context Protocol</li><li>Claude Code</li><li>OBS WebSocket</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Built by Garrison Hatcher, a senior Android engineer who builds agent tooling. The source is private; I'm happy to walk through it.</span>
+      <a href="https://github.com/garry645">github.com/garry645</a>
+    </div>
+  </footer>
+
+  <dialog id="lightbox" aria-label="Photo viewer">
+    <button class="lb-close" type="button" aria-label="Close">×</button>
+    <button class="lb-nav lb-prev" type="button" aria-label="Previous photo">‹</button>
+    <figure>
+      <img alt="">
+      <figcaption></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" type="button" aria-label="Next photo">›</button>
+  </dialog>
+
+  <script>
+    // Twitch only plays inside pages on the domain named in `parent`
+    (function () {
+      var box = document.getElementById("twitch-embed");
+      var host = location.hostname || "localhost";
+      var frame = document.createElement("iframe");
+      frame.src = "https://player.twitch.tv/?channel=gamergarry645&muted=true&autoplay=false&parent=" + encodeURIComponent(host);
+      frame.title = "ClaudesFactory live on Twitch";
+      frame.allowFullscreen = true;
+      frame.loading = "lazy";
+      box.appendChild(frame);
+    })();
+
+    // Gallery: each photo links to its full-size image, so without JS it still opens; with JS it opens in the viewer
+    (function () {
+      var photos = Array.prototype.slice.call(document.querySelectorAll(".photo-grid .photo"));
+      var box = document.getElementById("lightbox");
+      if (!photos.length || typeof box.showModal !== "function") return;
+      var img = box.querySelector("img");
+      var caption = box.querySelector("figcaption");
+      var current = 0;
+
+      function show(i) {
+        current = (i + photos.length) % photos.length;
+        var a = photos[current];
+        img.src = a.getAttribute("href");
+        img.alt = a.querySelector("img").alt;
+        caption.textContent = a.dataset.caption;
+      }
+      photos.forEach(function (a, i) {
+        a.addEventListener("click", function (e) {
+          e.preventDefault();
+          show(i);
+          box.showModal();
+        });
+      });
+      box.querySelector(".lb-prev").addEventListener("click", function () { show(current - 1); });
+      box.querySelector(".lb-next").addEventListener("click", function () { show(current + 1); });
+      box.querySelector(".lb-close").addEventListener("click", function () { box.close(); });
+      // A click on the dark backdrop (the dialog itself, not its contents) closes it
+      box.addEventListener("click", function (e) { if (e.target === box) box.close(); });
+      box.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft") show(current - 1);
+        if (e.key === "ArrowRight") show(current + 1);
+      });
+    })();
+  </script>
+</body>
+</html>
