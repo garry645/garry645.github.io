@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClaudesFactory changelog</title>
+  <meta name="description" content="What changes in ClaudesFactory, in plain words: Claude's tools, the rules the game holds it to, the camera and the stream.">
+  <meta property="og:title" content="ClaudesFactory changelog">
+  <meta property="og:description" content="What changes in the system around Claude as it plays Satisfactory on its own, newest first.">
+  <meta property="og:image" content="https://garry645.github.io/claudes-factory/media/full/hero-space-elevator.jpg">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../../">Garrison Hatcher</a>
+      <nav class="nav" aria-label="Page">
+        <a class="hide-sm" href="../">ClaudesFactory</a>
+        <a class="btn btn-sm btn-primary" href="https://www.twitch.tv/gamergarry645"><span class="live-dot" aria-hidden="true"></span>Watch on Twitch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero cl-hero">
+      <p class="eyebrow">ClaudesFactory · Changelog</p>
+      <h1 class="two-line"><span>What's changed.</span></h1>
+      <p class="lede">Claude plays on its own, but everything around it keeps changing: the tools it plays with, the rules the game holds it to, the camera and the stream. Here are those changes in plain words, newest first.</p>
+      <ul class="cl-legend" aria-label="Kinds of change">
+        <li><span class="cl-tag t-tools">Tools</span>what Claude can do and see</li>
+        <li><span class="cl-tag t-rules">Rules</span>what the game holds it to</li>
+        <li><span class="cl-tag t-camera">Camera</span>the stream's view</li>
+        <li><span class="cl-tag t-stream">Stream</span>overlay, scenes, OBS</li>
+        <li><span class="cl-tag t-run">Run</span>the supervisor that keeps it going</li>
+        <li><span class="cl-tag t-perf">Performance</span>smoother and lighter</li>
+      </ul>
+    </div>
+
+    <div class="wrap cl">
+
+      <section class="cl-release" id="2026-11-05" aria-labelledby="r-1105">
+        <div class="cl-when"><time datetime="2026-11-05">Nov 5</time><span class="cl-status">Testing</span></div>
+        <div class="cl-body">
+          <h2 id="r-1105">A lighter stream, freight cars and explosives</h2>
+          <p class="cl-intro">Built, and now being tested on a copy of the world before the next run. Most of it comes from a measured pass over what the whole setup costs to run.</p>
+          <ul class="cl-items">
+            <li><span class="cl-tag t-perf">Performance</span><div><b>The game no longer draws frames nobody sees.</b> It was running at about 85 frames a second for a 60 fps stream, and much faster when nothing slowed it down. While the stream camera has the view, the game is capped at the stream's 60.</div></li>
+            <li><span class="cl-tag t-perf">Performance</span><div><b>No more half-second freezes while Claude lays belts.</b> After every belt it built or removed, Claude's tools read back every belt in the world, about 1,860 of them, and the game paused for 0.4–0.55 s each time. They now read only the belts they touched.</div></li>
+            <li><span class="cl-tag t-perf">Performance</span><div><b>Idle connections stop slowing the game.</b> Each helper program connected to the mod made the game wait about a millisecond every frame, even with nothing to say.</div></li>
+            <li><span class="cl-tag t-stream">Stream</span><div><b>The timelapse camera films less, and never at a cut.</b> Sites nobody is building at are filmed once an hour instead of every 10 minutes, which was most of a run's disk use.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Freight cars by hand.</b> Claude can load and empty a train's freight car itself, for the parts no machine of its own makes yet.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Explosives.</b> Its railway was refused where a coral tree stood in the way, and the chainsaw can't cut those. Claude is now told what stands in its path, and it can clear boulders and coral trees with the game's own explosive, the Nobelisk, thrown and paid for as a player would.</div></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cl-release" id="2026-11-04" aria-labelledby="r-1104">
+        <div class="cl-when"><time datetime="2026-11-04">Nov 4</time><span class="cl-days">Days 125–133</span></div>
+        <div class="cl-body">
+          <h2 id="r-1104">Clean camera cuts, and a game master</h2>
+          <ul class="cl-items">
+            <li><span class="cl-tag t-camera">Camera</span><div><b>Cuts land on a loaded picture.</b> When the camera jumped to a far part of the factory, the game stopped to load it and the stream froze on the old shot for up to 1.3 s. The camera now loads its next shot before it cuts. In about five hours of stream since: none of those freezes, against 18–21 an hour before.</div></li>
+            <li><span class="cl-tag t-camera">Camera</span><div><b>New shots start moving straight away.</b> After a cut the camera used to start from rest and creep for half a second. It now picks up at full speed from the first frame.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Claude can ask the game master.</b> When a tool misbehaves or a rule makes no sense, Claude can put a question to the developer. The answer comes back with one of its later tool answers, in the same session or the next. Its first four questions, about laying rail, a clash it couldn't name and loading freight cars, each led to a fix.</div></li>
+            <li><span class="cl-tag t-perf">Performance</span><div><b>Claude's lookups stop freezing the game.</b> Asking for buildings by name no longer reads the whole world.</div></li>
+            <li><span class="cl-tag t-stream">Stream</span><div><b>Whole thoughts on the work card.</b> The "Working on" card grows to fit, instead of cutting a sentence off. The "On screen" card now changes with the camera instead of lagging behind it.</div></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cl-release" id="2026-11-01" aria-labelledby="r-1101">
+        <div class="cl-when"><time datetime="2026-11-01">Nov 1</time></div>
+        <div class="cl-body">
+          <h2 id="r-1101">Trains, and tidy lines</h2>
+          <ul class="cl-items">
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Claude sees rails and runs trains.</b> It can read a rail network (ends, joins, stations, trains and their paths), and drive a train on a round trip. A new tool lays track along a route it has surveyed for slopes and cliffs. A train line counts as a carrier when the factory's output is measured.</div></li>
+            <li><span class="cl-tag t-rules">Rules</span><div><b>One rule for belts, lifts and pipes.</b> They may pass through a floor (going up) or a wall (going across), and overlap nothing else. A cleanup pass rebuilt every line in the world that broke it, from 112 down to 9.</div></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cl-release" id="2026-10-31" aria-labelledby="r-1031">
+        <div class="cl-when"><time datetime="2026-10-31">Oct 30–31</time></div>
+        <div class="cl-body">
+          <h2 id="r-1031">A new overlay, and a camera that goes indoors</h2>
+          <ul class="cl-items">
+            <li><span class="cl-tag t-stream">Stream</span><div><b>The overlay, redesigned.</b> The next unlock and what it still needs, Claude's plan, how the factory is running, and the game day.</div></li>
+            <li><span class="cl-tag t-stream">Stream</span><div><b>A narrator.</b> A small, fast model (Claude Haiku) reads what Claude has been doing and writes the "Working on" card every 90 seconds.</div></li>
+            <li><span class="cl-tag t-stream">Stream</span><div><b>A second look when things go wrong.</b> When 3 of Claude's last 10 calls fail, Haiku looks over what happened and suggests a step back. Viewers see it on stream for 30 seconds.</div></li>
+            <li><span class="cl-tag t-camera">Camera</span><div><b>Indoors, and never in the ground.</b> The camera follows Claude inside buildings, zooms out past trees in the way, and never stands inside a hill.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Surveying before building.</b> Claude can read the ground along a belt's line before laying it, and read the whole map's heights. A third to two-fifths of its refused builds had been about terrain.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Upgrades in place, and joints that find a spot.</b> Belts, lifts and miners upgrade where they stand, as the build gun does. A belt joint the game refuses moves to the nearest spot it accepts.</div></li>
+            <li><span class="cl-tag t-run">Run</span><div><b>Growth means output.</b> A day is judged by what the factory produces, not by how many machines it has.</div></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cl-release" id="2026-10-29" aria-labelledby="r-1029">
+        <div class="cl-when"><time datetime="2026-10-29">Oct 27–29</time></div>
+        <div class="cl-body">
+          <h2 id="r-1029">Copilot mode</h2>
+          <ul class="cl-items">
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Talk to Claude from inside the game.</b> A chat panel in the game, from the keyboard or a phone. Claude plays while you direct it, and Esc interrupts it mid-task, as in Claude Code.</div></li>
+            <li><span class="cl-tag t-stream">Stream</span><div><b>The overlay is drawn by the game itself</b>, not layered on top in OBS, so it is part of the picture.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Refusals name what's in the way.</b> When the game refuses a placement, Claude is told what stands there. Belts say what they carry, and jams are named.</div></li>
+            <li><span class="cl-tag t-run">Run</span><div><b>The factory's growth is read from the game</b>, not taken from Claude's own report.</div></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cl-release" id="2026-10-26" aria-labelledby="r-1026">
+        <div class="cl-when"><time datetime="2026-10-26">Oct 25–26</time></div>
+        <div class="cl-body">
+          <h2 id="r-1026">Ghost mode and the factory tour</h2>
+          <ul class="cl-items">
+            <li><span class="cl-tag t-stream">Stream</span><div><b>Ghost mode.</b> While Claude is away between sessions, the stream keeps showing its factory running, labelled as a ghost. Nothing the ghost does is kept, and every day starts again from Claude's last checkpoint.</div></li>
+            <li><span class="cl-tag t-camera">Camera</span><div><b>The factory tour.</b> When Claude is neither flying nor building, the camera tours the factory, one group of machines at a time.</div></li>
+            <li><span class="cl-tag t-rules">Rules</span><div><b>No building in the ground or over a belt.</b> Placements that would sink into a rock or stand over a belt, lift or pipe are refused, as the game refuses them for a player.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>The game's own blueprints.</b> Claude designs in the game's Blueprint Designer and builds from its saved blueprints.</div></li>
+            <li><span class="cl-tag t-run">Run</span><div><b>A system prompt of its own.</b> Claude plays with instructions written for playing, not the coding assistant's, and a day ends when its context is full rather than on a timer.</div></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cl-release" id="2026-10-22" aria-labelledby="r-1022">
+        <div class="cl-when"><time datetime="2026-10-22">Oct 22–24</time></div>
+        <div class="cl-body">
+          <h2 id="r-1022">The stream runs itself</h2>
+          <ul class="cl-items">
+            <li><span class="cl-tag t-stream">Stream</span><div><b>Hands-off OBS.</b> A director program starts OBS, builds the scenes, goes live once Claude is at work, and shows a "be right back" card through planned restarts.</div></li>
+            <li><span class="cl-tag t-camera">Camera</span><div><b>Drones that fly like drones.</b> Smooth flight over the world, climbing for hills and walls ahead, and over buildings instead of through them.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Mistakes come down at once.</b> A belt joined on backwards, or bent tighter than the game allows, is taken down as soon as it is built, with how to build it right.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Multi-storey factories.</b> Walls stacked, a floor on the walls, machines on a chosen floor.</div></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cl-release" id="2026-10-18" aria-labelledby="r-1018">
+        <div class="cl-when"><time datetime="2026-10-18">Oct 17–19</time></div>
+        <div class="cl-body">
+          <h2 id="r-1018">Going live</h2>
+          <ul class="cl-items">
+            <li><span class="cl-tag t-camera">Camera</span><div><b>A director camera.</b> The game window becomes the broadcast: a camera following Claude's drone.</div></li>
+            <li><span class="cl-tag t-stream">Stream</span><div><b>The first overlay.</b> What Claude is doing, in plain words, over the picture. A refused build shows as refused, with the game's reason.</div></li>
+            <li><span class="cl-tag t-stream">Stream</span><div><b>Timelapses.</b> A second, off-screen camera films every site Claude builds at from a fixed angle, so each one can be played back as it went up.</div></li>
+            <li><span class="cl-tag t-rules">Rules</span><div><b>The Space Elevator opens the tiers</b>, as in the real game. Every building is judged once, when it is placed, and anything that breaks a rule is removed.</div></li>
+          </ul>
+        </div>
+      </section>
+
+      <p class="cl-foot">Older work, from before the stream, built the mod itself: placing real buildings through the game's own build path, the tool server, and the checks that compare Claude's claims with the actual world. <a href="../#how">How it works</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Built by Garrison Hatcher, a senior Android engineer who builds agent tooling. The source is private; I'm happy to walk through it.</span>
+      <a href="https://github.com/garry645">github.com/garry645</a>
+    </div>
+  </footer>
+</body>
+</html>
