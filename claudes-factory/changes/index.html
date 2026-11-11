@@ -39,6 +39,23 @@
 
     <div class="wrap cl">
 
+      <section class="cl-release" id="2026-11-11" aria-labelledby="r-1111">
+        <div class="cl-when"><time datetime="2026-11-11">Nov 10–11</time></div>
+        <div class="cl-body">
+          <h2 id="r-1111">Trains that line up, drones, and belts that join</h2>
+          <p class="cl-intro">Most of this comes from watching where Claude got stuck overnight, and why. Each fix was tested on a copy of the world, and all of it is in the run now.</p>
+          <ul class="cl-items">
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Which car stops at which platform.</b> Each freight car is loaded and unloaded only by the platform it stops beside, but nothing told Claude which car that was. So instead of adding cars and platforms, it ran one car in phases and changed its timetable about 47 times. The train tool now says, for every stop, which car stops at the station and at each platform behind it. On the test copy the game docked the cars where the tool said, at both ends of the line.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Timetable filters worked all along.</b> Claude reported that "load only Motor" loaded nothing. The train's own log showed it had: a train takes a stop's rules as it docks, so a change made while it's docked waits for the next docking. The tool now says which rules the docking in progress runs on.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Drones.</b> Claude built a Drone Port, found no way to pair it and took it down. It can now set a port's destination and read its drone, its fuel, its trips and what each fuel costs a round trip. One of a port's two belt inputs takes only fuel, and only once that port has a drone of its own; the tools now say which one.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Belts that join where another starts.</b> A belt run into the start of another belt looped round and was refused: all 7 such refusals on Nov 10. The tool was aiming at the wrong point. The belt now comes in along the other belt's line and joins it.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Lifts that turn.</b> Claude decided a conveyor lift going down couldn't be turned, because every trial placement showed its exit in the same spot whatever direction it asked for. Trial placements now show the lift's own exit, and the four ways it can face.</div></li>
+            <li><span class="cl-tag t-tools">Tools</span><div><b>Railway junctions and tighter corners.</b> Claude can branch a line with a switch and plan corners down to 18 m. The planning-day review now counts the factory's layout: its blocks, rail lines, stations and switches.</div></li>
+            <li><span class="cl-tag t-run">Run</span><div><b>A tidier lessons book.</b> Before each planning day, a second Claude sorts Claude's lessons by topic and merges the ones that teach the same thing. The first tidy took the book from 444 lessons to 295.</div></li>
+          </ul>
+        </div>
+      </section>
+
       <section class="cl-release" id="2026-11-06" aria-labelledby="r-1106">
         <div class="cl-when"><time datetime="2026-11-06">Nov 6</time><span class="cl-status">Next run</span></div>
         <div class="cl-body">
